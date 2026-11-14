@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SetiLab Mobile — тренажёр компьютерных сетей</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
 <meta name="description" content="SetiLab Mobile — учебный тренажёр компьютерных сетей на телефоне: схемы, командная строка, практические работы с проверкой, занятие без интернета.">
 <style>
 :root{--bg:#f6f8fb;--card:#fff;--fg:#0f172a;--mute:#475569;--line:#e2e8f0;--acc:#0d9488;--acc2:#0284c7;--warm:#f97316}
@@ -15,8 +16,7 @@ a{color:var(--acc2)}
 header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--fg);text-decoration:none}
-.logo i{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#0d9488,#0284c7);display:grid;place-items:center}
-.logo svg{width:20px;height:20px}
+.logo img{width:34px;height:34px;border-radius:9px;display:block}
 .langs{display:flex;gap:4px}
 .langs label{padding:5px 10px;border:1px solid var(--line);border-radius:999px;font-weight:700;font-size:12.5px;background:var(--card);cursor:pointer;user-select:none}
 .lr{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
@@ -61,7 +61,7 @@ footer a{color:var(--mute)}
 <input class="lr" type="radio" name="l" id="l-kk">
 <input class="lr" type="radio" name="l" id="l-en">
 <header class="top"><div class="wrap">
-  <a class="logo" href="./"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M6,3a3,3 0 1,1 0,6a3,3 0 1,1 0,-6zM18,3a3,3 0 1,1 0,6a3,3 0 1,1 0,-6zM12,15a3,3 0 1,1 0,6a3,3 0 1,1 0,-6zM7.2,8.3L11,15.2L12.8,14.3L9,7.4zM16.8,8.3L13,15.2L11.2,14.3L15,7.4zM8.5,5L15.5,5L15.5,7L8.5,7z"/></svg></i>SetiLab</a>
+  <a class="logo" href="./"><img src="icon.svg" alt="" width="34" height="34">SetiLab</a>
   <nav class="langs"><label for="l-ru">RU</label><label for="l-uz">UZ</label><label for="l-kk">QQ</label><label for="l-en">EN</label></nav>
 </div></header>
 <main class="wrap">
