@@ -3,24 +3,172 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SetiLab Mobile</title>
+<title>SetiLab Mobile — тренажёр компьютерных сетей</title>
+<meta name="description" content="SetiLab Mobile — учебный тренажёр компьютерных сетей на телефоне: схемы, командная строка, практические работы с проверкой, занятие без интернета.">
 <style>
-:root{--bg:#f8fafc;--card:#fff;--fg:#0f172a;--mute:#475569;--line:#e2e8f0;--acc:#0d9488}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,'Segoe UI',Roboto,system-ui,sans-serif}
-.wrap{max-width:640px;margin:0 auto;padding:40px 16px}
-h1{font-size:28px;margin:0 0 6px;color:var(--acc)}
-p{color:var(--mute);margin:0 0 24px}
-a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:10px 0;color:var(--fg);text-decoration:none;font-weight:700}
-a.card span{display:block;font-weight:400;color:var(--mute);font-size:14px}
+:root{--bg:#f6f8fb;--card:#fff;--fg:#0f172a;--mute:#475569;--line:#e2e8f0;--acc:#0d9488;--acc2:#0284c7;--warm:#f97316}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 Inter,'Segoe UI',Roboto,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--acc2)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:58px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--fg);text-decoration:none}
+.logo i{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#0d9488,#0284c7);display:grid;place-items:center}
+.logo svg{width:20px;height:20px}
+.langs{display:flex;gap:4px}
+.langs label{padding:5px 10px;border:1px solid var(--line);border-radius:999px;font-weight:700;font-size:12.5px;background:var(--card);cursor:pointer;user-select:none}
+.lr{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+section[data-l]{display:none}
+#l-ru:checked~main section[data-l=ru],#l-uz:checked~main section[data-l=uz],#l-kk:checked~main section[data-l=kk],#l-en:checked~main section[data-l=en]{display:block}
+#l-ru:checked~header label[for=l-ru],#l-uz:checked~header label[for=l-uz],#l-kk:checked~header label[for=l-kk],#l-en:checked~header label[for=l-en]{background:var(--fg);color:#fff;border-color:var(--fg)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 0 40px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:0 0 14px;letter-spacing:-.02em}
+.hero h1 b{background:linear-gradient(90deg,#0d9488,#0284c7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:18px;color:var(--mute);margin:0 0 22px;max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;font-weight:800;text-decoration:none;font-size:15px}
+.btn.main{background:var(--acc);color:#fff}
+.btn.ghost{background:var(--card);color:var(--fg);border:1.5px solid var(--line)}
+.soon{display:inline-block;margin-top:14px;font-size:13.5px;color:var(--mute)}
+.phones{position:relative;height:460px}
+.phones img{position:absolute;width:210px;border-radius:26px;border:6px solid #0f172a;box-shadow:0 20px 50px rgba(15,23,42,.25);background:#fff}
+.phones img:nth-child(1){left:0;top:30px;transform:rotate(-6deg)}
+.phones img:nth-child(2){left:50%;top:0;transform:translateX(-50%);z-index:2}
+.phones img:nth-child(3){right:0;top:30px;transform:rotate(6deg)}
+h2{font-size:26px;margin:0 0 18px;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:48px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.card .ic{font-size:26px}
+.card b{display:block;font-size:16px;margin:6px 0 4px}
+.card span{color:var(--mute);font-size:14.5px}
+.band{background:linear-gradient(135deg,#0f172a,#134e4a);color:#e2e8f0;border-radius:22px;padding:28px;margin-bottom:48px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+.band h3{margin:0 0 6px;font-size:21px;color:#fff}
+.band p{margin:0;color:#cbd5e1}
+.band .btn{background:#fff;color:#0f172a}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+footer a{color:var(--mute)}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:32px}.phones{height:380px;max-width:420px;margin:0 auto;width:100%}.phones img{width:170px}.grid{grid-template-columns:1fr}.band{grid-template-columns:1fr}}
+@media (max-width:420px){.phones{height:330px}.phones img{width:140px;border-width:4px;border-radius:20px}.langs label{padding:5px 8px}}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1220;--card:#111a2e;--fg:#e5e7eb;--mute:#94a3b8;--line:#1f2a44}.btn.ghost{color:var(--fg)}#l-ru:checked~header label[for=l-ru],#l-uz:checked~header label[for=l-uz],#l-kk:checked~header label[for=l-kk],#l-en:checked~header label[for=l-en]{background:#e5e7eb;color:#0b1220;border-color:#e5e7eb}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<h1>SetiLab Mobile</h1>
-<p>Учебный тренажёр компьютерных сетей · O‘quv kompyuter tarmoqlari trenajyori · Computer networks training simulator</p>
-<a class="card" href="privacy.html">Политика конфиденциальности<span>Maxfiylik siyosati · Qupıyalılıq siyasatı · Privacy Policy</span></a>
-<a class="card" href="terms.html">Условия использования<span>Foydalanish shartlari · Paydalanıw shártleri · Terms of Use</span></a>
-<a class="card" href="https://t.me/setilab_bot">Поддержка в Telegram: @setilab_bot<span>Yordam · Qollap-quwatlaw · Support</span></a>
-</div>
+<input class="lr" type="radio" name="l" id="l-ru" checked>
+<input class="lr" type="radio" name="l" id="l-uz">
+<input class="lr" type="radio" name="l" id="l-kk">
+<input class="lr" type="radio" name="l" id="l-en">
+<header class="top"><div class="wrap">
+  <a class="logo" href="./"><i><svg viewBox="0 0 24 24" fill="#fff"><path d="M6,3a3,3 0 1,1 0,6a3,3 0 1,1 0,-6zM18,3a3,3 0 1,1 0,6a3,3 0 1,1 0,-6zM12,15a3,3 0 1,1 0,6a3,3 0 1,1 0,-6zM7.2,8.3L11,15.2L12.8,14.3L9,7.4zM16.8,8.3L13,15.2L11.2,14.3L15,7.4zM8.5,5L15.5,5L15.5,7L8.5,7z"/></svg></i>SetiLab</a>
+  <nav class="langs"><label for="l-ru">RU</label><label for="l-uz">UZ</label><label for="l-kk">QQ</label><label for="l-en">EN</label></nav>
+</div></header>
+<main class="wrap">
+
+<section data-l="ru">
+  <div class="hero">
+    <div>
+      <h1>Компьютерные сети — <b>прямо в телефоне</b></h1>
+      <p class="lead">Собирайте схемы, настраивайте маршрутизаторы и коммутаторы в командной строке и выполняйте практические работы с автоматической проверкой. Без компьютера и без интернета.</p>
+      <div class="cta"><a class="btn main" href="https://t.me/setilab_bot">✈️ Стать тестировщиком</a><a class="btn ghost" href="#features">Возможности</a></div>
+      <span class="soon">Скоро в Google Play · сейчас идёт закрытое тестирование</span>
+    </div>
+    <div class="phones"><img src="img/scheme.jpg" alt="Схема сети" loading="lazy"><img src="img/cli.jpg" alt="Командная строка маршрутизатора"><img src="img/practical.jpg" alt="Практическая работа" loading="lazy"></div>
+  </div>
+  <h2 id="features">Что умеет SetiLab</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">🧩</div><b>Схемы сети</b><span>Маршрутизаторы, коммутаторы, компьютеры, серверы, Wi‑Fi и кабели — перетаскиванием пальцем.</span></div>
+    <div class="card"><div class="ic">⌨️</div><b>Командная строка</b><span>Адреса, VLAN, STP, статическая и динамическая маршрутизация, DHCP, ACL, Telnet и SSH.</span></div>
+    <div class="card"><div class="ic">✅</div><b>Практические с проверкой</b><span>15 работ: условие, шаги, шпаргалка и проверка — программа сама покажет, что не так.</span></div>
+    <div class="card"><div class="ic">📦</div><b>Путь пакета</b><span>Отправьте ping и посмотрите, как пакет идёт по схеме шаг за шагом.</span></div>
+    <div class="card"><div class="ic">📡</div><b>Занятие без интернета</b><span>Преподаватель запускает сервер на телефоне, студенты подключаются по Wi‑Fi через QR-код.</span></div>
+    <div class="card"><div class="ic">🔢</div><b>Тренажёр чисел</b><span>Перевод 10 ↔ 2 по шагам, ASCII, IP-адрес и маска — для первой практической.</span></div>
+  </div>
+  <div class="band"><div><h3>Помогите проверить приложение</h3><p>15 коротких заданий за 15 дней. Тем, кто выполнит все, — «Сервер+» на год в подарок.</p></div><a class="btn" href="https://t.me/setilab_bot">Записаться в @setilab_bot</a></div>
+</section>
+
+<section data-l="uz">
+  <div class="hero">
+    <div>
+      <h1>Kompyuter tarmoqlari — <b>telefoningizda</b></h1>
+      <p class="lead">Sxemalar yig‘ing, marshrutizator va kommutatorlarni buyruqlar qatorida sozlang, amaliy ishlarni avtomatik tekshiruv bilan bajaring. Kompyutersiz va internetsiz.</p>
+      <div class="cta"><a class="btn main" href="https://t.me/setilab_bot">✈️ Tester bo‘lish</a><a class="btn ghost" href="#f-uz">Imkoniyatlar</a></div>
+      <span class="soon">Tez orada Google Play’da · hozir yopiq sinov ketmoqda</span>
+    </div>
+    <div class="phones"><img src="img/scheme.jpg" alt="" loading="lazy"><img src="img/cli.jpg" alt=""><img src="img/practical.jpg" alt="" loading="lazy"></div>
+  </div>
+  <h2 id="f-uz">SetiLab nimalar qila oladi</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">🧩</div><b>Tarmoq sxemalari</b><span>Marshrutizatorlar, kommutatorlar, kompyuterlar, serverlar, Wi‑Fi va kabellar — barmoq bilan sudrab.</span></div>
+    <div class="card"><div class="ic">⌨️</div><b>Buyruqlar qatori</b><span>Manzillar, VLAN, STP, statik va dinamik marshrutlash, DHCP, ACL, Telnet va SSH.</span></div>
+    <div class="card"><div class="ic">✅</div><b>Tekshiruvli amaliy ishlar</b><span>15 ta ish: shart, qadamlar, shpargalka va tekshiruv — dastur xatoni o‘zi ko‘rsatadi.</span></div>
+    <div class="card"><div class="ic">📦</div><b>Paket yo‘li</b><span>Ping yuboring va paket sxema bo‘ylab qanday yurishini qadamma-qadam ko‘ring.</span></div>
+    <div class="card"><div class="ic">📡</div><b>Internetsiz mashg‘ulot</b><span>O‘qituvchi telefonda server ishga tushiradi, talabalar QR-kod orqali Wi‑Fi’da ulanadi.</span></div>
+    <div class="card"><div class="ic">🔢</div><b>Sonlar trenajyori</b><span>10 ↔ 2 o‘tkazish qadamma-qadam, ASCII, IP-manzil va niqob.</span></div>
+  </div>
+  <div class="band"><div><h3>Ilovani sinashga yordam bering</h3><p>15 kunda 15 ta qisqa topshiriq. Hammasini bajarganlarga — sovg‘aga bir yillik «Server+».</p></div><a class="btn" href="https://t.me/setilab_bot">@setilab_bot orqali yozilish</a></div>
+</section>
+
+<section data-l="kk">
+  <div class="hero">
+    <div>
+      <h1>Kompyuter tarmaqları — <b>telefonıńızda</b></h1>
+      <p class="lead">Sxemalar jıynań, marshrutizator hám kommutatorlardı buyrıqlar qatarında sazlań, ámeliy jumıslardı avtomatik tekseriw menen orınlań. Kompyutersiz hám internetsiz.</p>
+      <div class="cta"><a class="btn main" href="https://t.me/setilab_bot">✈️ Tester bolıw</a><a class="btn ghost" href="#f-kk">Múmkinshilikler</a></div>
+      <span class="soon">Jaqında Google Play’de · házir jabıq sınaw júrip atır</span>
+    </div>
+    <div class="phones"><img src="img/scheme.jpg" alt="" loading="lazy"><img src="img/cli.jpg" alt=""><img src="img/practical.jpg" alt="" loading="lazy"></div>
+  </div>
+  <h2 id="f-kk">SetiLab neler isley aladı</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">🧩</div><b>Tarmaq sxemaları</b><span>Marshrutizatorlar, kommutatorlar, kompyuterler, serverler, Wi‑Fi hám kabeller — barmaq penen súyrep.</span></div>
+    <div class="card"><div class="ic">⌨️</div><b>Buyrıqlar qatarı</b><span>Mánziller, VLAN, STP, statik hám dinamik marshrutlaw, DHCP, ACL, Telnet hám SSH.</span></div>
+    <div class="card"><div class="ic">✅</div><b>Tekseriwli ámeliy jumıslar</b><span>15 jumıs: shárt, qádemler, shpargalka hám tekseriw — baǵdarlama qáteni ózi kórsetedi.</span></div>
+    <div class="card"><div class="ic">📦</div><b>Paket jolı</b><span>Ping jiberiń hám paket sxema boylap qalay júretuǵının qádemme-qádem kóriń.</span></div>
+    <div class="card"><div class="ic">📡</div><b>Internetsiz sabaq</b><span>Oqıtıwshı telefonda server iske túsiredi, studentler QR-kod arqalı Wi‑Fi’ǵa jalǵanadı.</span></div>
+    <div class="card"><div class="ic">🔢</div><b>Sanlar trenajyorı</b><span>10 ↔ 2 awdarıw qádemme-qádem, ASCII, IP-mánzil hám maska.</span></div>
+  </div>
+  <div class="band"><div><h3>Qosımshanı sınawǵa járdem beriń</h3><p>15 kúnde 15 qısqa tapsırma. Barlıǵın orınlaǵanlarǵa — sıylıqqa bir jıllıq «Server+».</p></div><a class="btn" href="https://t.me/setilab_bot">@setilab_bot arqalı jazılıw</a></div>
+</section>
+
+<section data-l="en">
+  <div class="hero">
+    <div>
+      <h1>Computer networks — <b>right on your phone</b></h1>
+      <p class="lead">Build network diagrams, configure routers and switches in the command line and do lab works with automatic checking. No computer and no internet needed.</p>
+      <div class="cta"><a class="btn main" href="https://t.me/setilab_bot">✈️ Become a tester</a><a class="btn ghost" href="#f-en">Features</a></div>
+      <span class="soon">Coming soon to Google Play · closed testing in progress</span>
+    </div>
+    <div class="phones"><img src="img/scheme.jpg" alt="" loading="lazy"><img src="img/cli.jpg" alt=""><img src="img/practical.jpg" alt="" loading="lazy"></div>
+  </div>
+  <h2 id="f-en">What SetiLab can do</h2>
+  <div class="grid">
+    <div class="card"><div class="ic">🧩</div><b>Network diagrams</b><span>Routers, switches, PCs, servers, Wi‑Fi and cables — drag and drop with your finger.</span></div>
+    <div class="card"><div class="ic">⌨️</div><b>Command line</b><span>Addressing, VLANs, STP, static and dynamic routing, DHCP, ACLs, Telnet and SSH.</span></div>
+    <div class="card"><div class="ic">✅</div><b>Labs with checking</b><span>15 labs: task, steps, cheat sheet and a check that shows what’s wrong.</span></div>
+    <div class="card"><div class="ic">📦</div><b>Packet path</b><span>Send a ping and watch the packet travel across the diagram step by step.</span></div>
+    <div class="card"><div class="ic">📡</div><b>Class without internet</b><span>The teacher runs a server on their phone; students join over Wi‑Fi with a QR code.</span></div>
+    <div class="card"><div class="ic">🔢</div><b>Number trainer</b><span>Decimal ↔ binary step by step, ASCII, IP address and mask.</span></div>
+  </div>
+  <div class="band"><div><h3>Help us test the app</h3><p>15 short tasks in 15 days. Complete them all and get a year of “Server+” as a gift.</p></div><a class="btn" href="https://t.me/setilab_bot">Sign up in @setilab_bot</a></div>
+</section>
+
+</main>
+<footer><div class="wrap">
+  <span>© 2026 SetiLab Mobile · Kydyrov R.E.</span>
+  <span><a href="privacy.html">Политика конфиденциальности · Privacy</a> · <a href="terms.html">Условия · Terms</a> · <a href="https://t.me/setilab_bot">@setilab_bot</a></span>
+</div></footer>
+<script>
+(function(){
+  var L=['ru','uz','kk','en'];
+  var q=(location.search.match(/[?&]lang=([a-z-]+)/)||[])[1]||(navigator.language||'ru').slice(0,2);
+  if(q==='kaa')q='kk'; if(L.indexOf(q)<0)q='ru';
+  var r=document.getElementById('l-'+q); if(r)r.checked=true;
+  function sync(l){document.documentElement.lang=l==='kk'?'kaa':l;document.querySelectorAll('footer a[href$=".html"]').forEach(function(a){a.href=a.getAttribute('href').split('?')[0]+'?lang='+l})}
+  sync(q);
+  L.forEach(function(l){document.getElementById('l-'+l).addEventListener('change',function(){sync(l)})});
+})();
+</script>
 </body>
 </html>
