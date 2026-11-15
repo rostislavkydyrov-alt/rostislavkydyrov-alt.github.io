@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Удаление данных — SetiLab</title>
+<style>
+:root{--bg:#f8fafc;--card:#fff;--fg:#0f172a;--mute:#475569;--line:#e2e8f0;--acc:#0d9488}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15.5px/1.6 Inter,'Segoe UI',Roboto,system-ui,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:16px 16px 48px}
+.top{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.brand{font-weight:800;font-size:15px;color:var(--acc)}
+.langs{display:flex;gap:6px;flex-wrap:wrap}
+.langs label{padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--fg);font-weight:700;font-size:13px;background:var(--card);cursor:pointer;user-select:none;min-width:44px;text-align:center}
+.lr{position:absolute;top:0;left:0;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+@media (max-width:480px){article{padding:16px 14px}}
+h1{font-size:24px;line-height:1.25;margin:0 0 4px}
+.meta{color:var(--mute);font-size:13px;margin:0 0 18px}
+h2{font-size:17px;margin:22px 0 6px;scroll-margin-top:12px}
+ul,ol{padding-left:22px;margin:6px 0}
+li{margin:3px 0}
+p{margin:6px 0}
+.note{border-left:3px solid var(--acc);padding:6px 12px;background:color-mix(in srgb,var(--acc) 8%,transparent);border-radius:0 10px 10px 0}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
+.toc a{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none}
+section[data-l]{display:none}
+a{color:var(--acc)}
+#l-ru:checked~.wrap section[data-l="ru"]{display:block}
+#l-ru:checked~.wrap label[for="l-ru"]{background:var(--acc);border-color:var(--acc);color:#fff}
+#l-ru:focus-visible~.wrap label[for="l-ru"]{outline:2px solid var(--acc);outline-offset:2px}
+#l-uz:checked~.wrap section[data-l="uz"]{display:block}
+#l-uz:checked~.wrap label[for="l-uz"]{background:var(--acc);border-color:var(--acc);color:#fff}
+#l-uz:focus-visible~.wrap label[for="l-uz"]{outline:2px solid var(--acc);outline-offset:2px}
+#l-kk:checked~.wrap section[data-l="kk"]{display:block}
+#l-kk:checked~.wrap label[for="l-kk"]{background:var(--acc);border-color:var(--acc);color:#fff}
+#l-kk:focus-visible~.wrap label[for="l-kk"]{outline:2px solid var(--acc);outline-offset:2px}
+#l-en:checked~.wrap section[data-l="en"]{display:block}
+#l-en:checked~.wrap label[for="l-en"]{background:var(--acc);border-color:var(--acc);color:#fff}
+#l-en:focus-visible~.wrap label[for="l-en"]{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<input type="radio" name="lang" id="l-ru" class="lr" checked aria-label="RU"><input type="radio" name="lang" id="l-uz" class="lr" aria-label="UZ"><input type="radio" name="lang" id="l-kk" class="lr" aria-label="QQ"><input type="radio" name="lang" id="l-en" class="lr" aria-label="EN">
+<div class="wrap">
+  <div class="top">
+    <span class="brand">SetiLab Mobile</span>
+    <nav class="langs" aria-label="Language"><label for="l-ru">RU</label><label for="l-uz">UZ</label><label for="l-kk">QQ</label><label for="l-en">EN</label></nav>
+  </div>
+  <article>
+<section data-l="ru">
+<h1>Удаление аккаунта и данных — SetiLab Mobile</h1>
+<p class="meta">Приложение «SetiLab — сетевой тренажёр» · разработчик Кыдыров Р.Е.</p>
+<p>В SetiLab нет общего аккаунта у разработчика. «Аккаунт» — это ваша запись в группе на сервере занятия (телефон или компьютер преподавателя): ФИО, группа, PIN, ключи устройств, сданные работы и оценки.</p>
+<h2>Как удалить данные на сервере занятия</h2>
+<ol><li>Откройте приложение и подключитесь к серверу своего занятия.</li><li>Меню → «Отображение и о программе» → «Удалить мои данные на сервере».</li><li>Подтвердите. Удаляются запись в группе, оценки, сданные файлы, ключи устройств и журнал входов.</li></ol>
+<h2>Как удалить данные на телефоне</h2>
+<ol><li>Меню → «Отображение и о программе» → «Удалить данные на этом устройстве», или удалите приложение.</li></ol>
+<h2>Если не получается в приложении</h2>
+<p>Напишите в <a href="https://t.me/setilab_bot">@setilab_bot</a> (Telegram) — «Удалить мои данные», укажите имя и группу. Ответим и удалим в течение 30 дней. Запись тестировщика в боте удаляется командой <b>/delete</b>.</p>
+<h2>Что хранится и сколько</h2>
+<ul><li>Анонимная статистика (случайный номер установки в виде хеша, версия, язык) — удаляется автоматически через 12 месяцев после последнего запуска.</li><li>Данные группы — пока существует группа или до удаления; ключи устройств — 6 месяцев.</li><li>Ничего не сохраняется после удаления, кроме случаев, когда хранение требует закон.</li></ul>
+<p>Подробнее — <a href="privacy.html">политика конфиденциальности</a>.</p>
+</section>
+<section data-l="uz">
+<h1>Hisob va ma’lumotlarni o‘chirish — SetiLab Mobile</h1>
+<p class="meta">«SetiLab — tarmoq trenajyori» ilovasi · dasturchi Kidirov R.E.</p>
+<p>SetiLab’da dasturchida umumiy hisob yo‘q. «Hisob» — bu dars serveridagi (o‘qituvchining telefoni yoki kompyuteri) guruhdagi yozuvingiz: F.I.Sh., guruh, PIN, qurilma kalitlari, topshirilgan ishlar va baholar.</p>
+<h2>Dars serveridagi ma’lumotlarni o‘chirish</h2>
+<ol><li>Ilovani oching va darsingiz serveriga ulaning.</li><li>Menyu → «Ko‘rinish va dastur haqida» → «Serverdagi ma’lumotlarimni o‘chirish».</li><li>Tasdiqlang. Guruhdagi yozuv, baholar, fayllar, qurilma kalitlari va kirishlar jurnali o‘chiriladi.</li></ol>
+<h2>Telefondagi ma’lumotlarni o‘chirish</h2>
+<ol><li>Menyu → «Ko‘rinish va dastur haqida» → «Ushbu qurilmadagi ma’lumotlarni o‘chirish» yoki ilovani o‘chiring.</li></ol>
+<h2>Ilovada bo‘lmasa</h2>
+<p><a href="https://t.me/setilab_bot">@setilab_bot</a> ga yozing — ismingiz va guruhingizni ko‘rsating. 30 kun ichida o‘chiramiz. Botdagi tester yozuvi <b>/delete</b> buyrug‘i bilan o‘chiriladi.</p>
+<h2>Nima va qancha saqlanadi</h2>
+<ul><li>Anonim statistika — oxirgi ishga tushirishdan 12 oy o‘tgach avtomatik o‘chiriladi.</li><li>Guruh ma’lumotlari — guruh mavjud ekan yoki o‘chirilguncha; qurilma kalitlari — 6 oy.</li></ul>
+<p>Batafsil — <a href="privacy.html">maxfiylik siyosati</a>.</p>
+</section>
+<section data-l="kk">
+<h1>Akkaunt hám maǵlıwmatlardı óshiriw — SetiLab Mobile</h1>
+<p class="meta">«SetiLab — tarmaq trenajeri» qosımshası · baǵdarlamashı Kıdırov R.E.</p>
+<p>SetiLab’ta baǵdarlamashıda ulıwma akkaunt joq. «Akkaunt» — sabaq serverindegi (oqıtıwshınıń telefonı yamasa kompyuteri) toparıńızdaǵı jazbańız: F.A.Á., topar, PIN, qurılma giltleri, tapsırılǵan jumıslar hám bahalar.</p>
+<h2>Sabaq serverindegi maǵlıwmatlardı óshiriw</h2>
+<ol><li>Qosımshanı ashıp, sabaǵıńız serverine qosılıń.</li><li>Menyu → «Kóriniw hám baǵdarlama haqqında» → «Serverdegi maǵlıwmatlarımdı óshiriw».</li><li>Tastıyıqlań. Topardaǵı jazba, bahalar, fayllar, qurılma giltleri hám kiriw jurnalı óshiriledi.</li></ol>
+<h2>Telefondaǵı maǵlıwmatlardı óshiriw</h2>
+<ol><li>Menyu → «Kóriniw hám baǵdarlama haqqında» → «Usı qurılmadaǵı maǵlıwmatlardı óshiriw» yamasa qosımshanı óshiriń.</li></ol>
+<h2>Qosımshada bolmasa</h2>
+<p><a href="https://t.me/setilab_bot">@setilab_bot</a> qa jazıń — atıńız hám toparıńızdı kórsetiń. 30 kún ishinde óshiremiz. Bottaǵı tester jazbası <b>/delete</b> buyrıǵı menen óshiriledi.</p>
+<h2>Ne hám qansha saqlanadı</h2>
+<ul><li>Anonim statistika — sońǵı iske túsiriwden 12 ay ótkennen keyin avtomat óshiriledi.</li><li>Topar maǵlıwmatları — topar bar bolǵansha yamasa óshirilgenshe; qurılma giltleri — 6 ay.</li></ul>
+<p>Tolıǵıraq — <a href="privacy.html">qupıyalılıq siyasatı</a>.</p>
+</section>
+<section data-l="en">
+<h1>Delete your account and data — SetiLab Mobile</h1>
+<p class="meta">App “SetiLab — сетевой тренажёр” · developer R. Kydyrov</p>
+<p>SetiLab has no account with the developer. Your “account” is your record in a group on the class server (the teacher’s phone or computer): name, group, PIN, device keys, submitted work and grades.</p>
+<h2>Delete data on the class server</h2>
+<ol><li>Open the app and connect to your class server.</li><li>Menu → “Display and about” → “Delete my data on the server”.</li><li>Confirm. Your group record, grades, submitted files, device keys and sign-in log are deleted.</li></ol>
+<h2>Delete data on the phone</h2>
+<ol><li>Menu → “Display and about” → “Delete data on this device”, or uninstall the app.</li></ol>
+<h2>If it doesn’t work in the app</h2>
+<p>Message <a href="https://t.me/setilab_bot">@setilab_bot</a> on Telegram with your name and group. We delete within 30 days. A tester record in the bot is deleted with <b>/delete</b>.</p>
+<h2>What is kept and for how long</h2>
+<ul><li>Anonymous statistics (hashed random install number, version, language) — deleted automatically 12 months after the last launch.</li><li>Group data — while the group exists or until deleted; device keys — 6 months.</li></ul>
+<p>More: <a href="privacy.html">privacy policy</a>.</p>
+</section>
+</article>
+</div>
+<script>
+(function(){
+  var L=['ru','uz','kk','en'];
+  function apply(q){
+    document.documentElement.lang=q==='kk'?'kaa':q;
+    var t=document.querySelector('section[data-l="'+q+'"] h1'); if(t)document.title=t.textContent+' — SetiLab Mobile';
+    document.querySelectorAll('a[href^="privacy.html"],a[href^="terms.html"],a[href^="guide.html"]').forEach(function(a){a.setAttribute('href',a.getAttribute('href').split('?')[0]+'?lang='+q)});
+  }
+  var q=(location.search.match(/[?&]lang=([a-z-]+)/)||[])[1]||(navigator.language||'ru').slice(0,2);
+  if(q==='uz-cyrl')q='uz'; if(q==='kaa')q='kk'; if(L.indexOf(q)<0)q='ru';
+  var r=document.getElementById('l-'+q); if(r)r.checked=true;
+  apply(q);
+  document.querySelectorAll('.toc a').forEach(function(a){a.addEventListener('click',function(e){var t=document.getElementById(a.getAttribute('href').slice(1)); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+  L.forEach(function(l){var el=document.getElementById('l-'+l); el.addEventListener('change',function(){if(el.checked){apply(l);window.scrollTo(0,0);}});});
+})();
+</script>
+</body>
+</html>
